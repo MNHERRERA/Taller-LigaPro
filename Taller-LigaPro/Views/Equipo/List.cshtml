@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Taller_LigaPro.Models.Equipo>
 
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = "Liga Pro";
 }
 
-<h1>List</h1>
+<h1>Liga Pro</h1>
 
 <p>
     <a class="btn btn-success" clasasp-action="Create">Create New</a>
@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PartidosJugados)
@@ -31,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.PartidosPerdidos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ToatalPuntos)
+                @Html.DisplayNameFor(model => model.TotalPuntos)
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                 <img src="@item.LogoUrl" width="60" height="60" style="object-fit: contain;" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -58,12 +58,11 @@
                 @Html.DisplayFor(modelItem => item.PartidosPerdidos)
             </td>           
             <td>    
-                @Html.DisplayFor(modelItem => item.ToatalPuntos)
+                @Html.DisplayFor(modelItem => item.TotalPuntos)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditarEquipo", new {id=item.Id }, new { @class = "btn btn-success"}) |
-                    @Html.ActionLink("Details", "Details", new { }, new { @class = "btn btn-info" }) |
-                    @Html.ActionLink("Delete", "Delete", new { }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Edit", "EditarEquipo", new {id=item.Id }, new { @class = "btn btn-success"})
+                  
             </td>
         </tr>
 }
