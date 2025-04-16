@@ -7,17 +7,36 @@ namespace Taller_LigaPro.Controllers
 {
     public class EquipoController : Controller  
     {
-        
+        public EquiposRepository _repository;
+        public EquipoController()
+        {
+            _repository = new EquiposRepository();
+        }   
+
         public IActionResult List()
         {
-            EquiposRepository repository = new EquiposRepository();
-            var equipos = repository.DevuleveListEquipos();          
+            
+            var equipos = _repository.DevuleveListEquipos();          
             return View(equipos);
         }
-        public IActionResult EditarEquipo()
+        public IActionResult EditarEquipo(int Id)
         {
-            Equipo bsc = new Equipo{ Id = 1 };  
-            return View(bsc);   
+            
+            var equipos= _repository.DevuelveInformacionEquipo(Id); 
+            return View(equipos);   
+        }
+        [HttpPost]
+        public IActionResult EditarEquipo(Equipo equipo)
+        {
+            try
+            {
+                var actualziar = _repository.ActualziarEquipo(equipo);
+                return View();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
         
     }

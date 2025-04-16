@@ -12,9 +12,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -31,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.PartidosPerdidos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ToatalPuntos)
+                @Html.DisplayNameFor(model => model.TotalPuntos)
             </th>
             <th></th>
         </tr>
@@ -40,7 +38,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                <li><img src="icono.png" alt="icono"> Elemento de lista</li>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -58,12 +56,10 @@
                 @Html.DisplayFor(modelItem => item.PartidosPerdidos)
             </td>           
             <td>    
-                @Html.DisplayFor(modelItem => item.ToatalPuntos)
+                @Html.DisplayFor(modelItem => item.TotalPuntos)    
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditarEquipo", new {id=item.Id }, new { @class = "btn btn-success"}) |
-                    @Html.ActionLink("Details", "Details", new { }, new { @class = "btn btn-info" }) |
-                    @Html.ActionLink("Delete", "Delete", new { }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Edit", "EditarEquipo", new {id=item.Id }, new { @class = "btn btn-success"}) 
             </td>
         </tr>
 }

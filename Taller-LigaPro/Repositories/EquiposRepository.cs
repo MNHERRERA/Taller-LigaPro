@@ -1,57 +1,51 @@
 ﻿using Taller_LigaPro.Models;
+using System.Linq;
+using System;
+using System.Collections.Generic;
+
+
 
 namespace Taller_LigaPro.Repositories
 {
     public class EquiposRepository
     {
+        private static List<Equipo> equipos = new List<Equipo>
+        {
+            new Equipo { Id = 1, Nombre = "BSC", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 },
+            new Equipo { Id = 2, Nombre = "LDU", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 },
+            new Equipo { Id = 3, Nombre = "Emelec", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 },
+            new Equipo { Id = 4, Nombre = "Aucas", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 }
+        };
         public IEnumerable<Equipo> DevuleveListEquipos()
         {
-            List<Equipo> equipos = new List<Equipo>();
-            Equipo bsc = new Equipo
+            return equipos.OrderByDescending(x => x.TotalPuntos).ToList();
+        }
+        public Equipo DevuelveInformacionEquipo(int Id)
+        {
+
+            var equipos = DevuleveListEquipos();
+            var equipo = equipos.First(item => item.Id == Id);
+            return equipo;
+
+        }
+
+        public bool ActualziarEquipo(Equipo equipoActualizado)
+        {
+            // Buscar el equipo existente en la lista por Id
+            var equipoExistente = equipos.FirstOrDefault(e => e.Id == equipoActualizado.Id);
+
+            if (equipoExistente != null)
             {
-                Id = 1,
-                Nombre = "BSC",
-                PartidosJugados = 4,
-                PartidosGanados = 3,
-                PartidosPerdidos = 3,
-                PartidosEmpatados = 5,
-                ToatalPuntos = 0,
-            };
-            Equipo ldu = new Equipo
-            {
-                Id = 1,
-                Nombre = "LDU",
-                PartidosGanados = 3,
-                PartidosPerdidos = 3,
-                PartidosJugados = 4,
-                PartidosEmpatados = 5,
-                ToatalPuntos = 0,
-            };
-            Equipo eml = new Equipo
-            {
-                Id = 1,
-                Nombre = "Emelec",
-                PartidosGanados = 3,
-                PartidosPerdidos = 3,
-                PartidosJugados = 4,
-                PartidosEmpatados = 5,
-                ToatalPuntos = 0,
-            };
-            Equipo auc = new Equipo
-            {
-                Id = 1,
-                Nombre = "Emelec",
-                PartidosGanados = 3,
-                PartidosPerdidos = 3,
-                PartidosJugados = 4,
-                PartidosEmpatados = 5,
-                ToatalPuntos = 0,
-            };
-            equipos.Add(auc);
-            equipos.Add(bsc);
-            equipos.Add(ldu);
-            equipos.Add(eml);
-            return equipos;
+                // Actualizar sus propiedades
+                equipoExistente.Nombre = equipoActualizado.Nombre;
+                equipoExistente.PartidosGanados = equipoActualizado.PartidosGanados;
+                equipoExistente.PartidosEmpatados = equipoActualizado.PartidosEmpatados;
+                equipoExistente.PartidosPerdidos = equipoActualizado.PartidosPerdidos;
+           
+                return true;
+            }
+
+            return false;
         }
     }
 }
