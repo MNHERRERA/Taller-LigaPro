@@ -11,10 +11,10 @@ namespace Taller_LigaPro.Repositories
     {
         private static List<Equipo> equipos = new List<Equipo>
         {
-            new Equipo { Id = 1, Nombre = "BSC", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 },
-            new Equipo { Id = 2, Nombre = "LDU", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 },
-            new Equipo { Id = 3, Nombre = "Emelec", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 },
-            new Equipo { Id = 4, Nombre = "Aucas", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 }
+            new Equipo { Id = 1, Nombre = "BSC", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3, LogoUrl = "/Logos/bsc.jpeg" },
+            new Equipo { Id = 2, Nombre = "LDU", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3,LogoUrl = "/Logos/ldu.png"},
+            new Equipo { Id = 3, Nombre = "Emelec", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3 , LogoUrl = "/Logos/emele.png"},
+            new Equipo { Id = 4, Nombre = "Aucas", PartidosGanados = 3, PartidosEmpatados = 5, PartidosPerdidos = 3,LogoUrl = "/Logos/auca.png" }
         };
         public IEnumerable<Equipo> DevuleveListEquipos()
         {

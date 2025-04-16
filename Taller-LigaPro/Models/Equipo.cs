@@ -27,6 +27,7 @@ namespace Taller_LigaPro.Models
                 return (PartidosGanados * 3) + (PartidosEmpatados * 1);
             }
         }
+        public string LogoUrl { get; set; }
 
         internal object First(Func<object, bool> value)
         {
